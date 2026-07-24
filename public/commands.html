@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commands — Starla</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="mobile-bar">
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <div class="mobile-brand"><span class="brand-mark" style="width:26px;height:26px;font-size:13px;">◈</span> Starla</div>
+  <span></span>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <span class="brand-mark">◈</span>
+      <div><div class="brand-name">Starla</div><div class="brand-sub">security console</div></div>
+    </div>
+
+    <nav class="nav">
+      <div class="nav__label">Navigate</div>
+      <a class="nav__item" href="servers.html"><i data-ic="grid"></i>Your servers</a>
+      <a class="nav__item is-active" href="commands.html"><i data-ic="command"></i>Commands</a>
+    </nav>
+
+    <div class="sidebar__footer">
+      <div class="uptime"><span class="dot"></span> Bot online</div>
+    </div>
+  </aside>
+
+  <div class="scrim" id="scrim"></div>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>Command reference</h1>
+        <p class="topbar__sub">Everything Starla can do, straight from the bot's own command catalogue</p>
+      </div>
+    </div>
+
+    <div class="cmd-search">
+      <i data-ic="search"></i>
+      <input type="text" id="cmd-search" placeholder="Search commands…">
+    </div>
+
+    <div id="cmd-container"><p class="muted">Loading commands…</p></div>
+  </main>
+</div>
+
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const scrim = document.getElementById('scrim');
+  document.getElementById('hamburger')?.addEventListener('click', () => { sidebar.classList.add('is-open'); scrim.classList.add('is-open'); });
+  scrim?.addEventListener('click', () => { sidebar.classList.remove('is-open'); scrim.classList.remove('is-open'); });
+</script>
+<script src="js/commands.js"></script>
+</body>
+</html>

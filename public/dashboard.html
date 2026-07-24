@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Starla — Security Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="mobile-bar">
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <div class="mobile-brand"><span class="brand-mark" style="width:26px;height:26px;font-size:13px;">◈</span> Starla</div>
+  <span class="status-pill status-pill--good" id="mobile-status"><i></i>—</span>
+</header>
+
+<div class="shell">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <span class="brand-mark">◈</span>
+      <div>
+        <div class="brand-name">Starla</div>
+        <div class="brand-sub">security console</div>
+      </div>
+    </div>
+
+    <a class="server-switcher" href="servers.html">
+      <img src="" alt="" class="server-icon" id="sidebar-icon">
+      <div class="server-meta">
+        <div class="server-name" id="sidebar-name">Loading…</div>
+        <div class="server-id" id="sidebar-meta">—</div>
+      </div>
+      <i data-ic="arrow-left" style="margin:0;color:var(--text-faint)"></i>
+    </a>
+
+    <nav class="nav">
+      <div class="nav__label">Overview</div>
+      <a class="nav__item is-active" data-view="overview" href="#overview"><i data-ic="grid"></i>Dashboard</a>
+      <a class="nav__item" data-view="logs" href="#logs"><i data-ic="terminal"></i>Moderation Logs</a>
+      <a class="nav__item" data-view="settings" href="#settings"><i data-ic="sliders"></i>Settings</a>
+
+      <div class="nav__label">More</div>
+      <a class="nav__item" href="commands.html"><i data-ic="command"></i>Commands</a>
+      <a class="nav__item" href="servers.html"><i data-ic="users"></i>Switch server</a>
+    </nav>
+
+    <div class="sidebar__footer">
+      <div class="uptime"><span class="dot"></span> Bot online</div>
+      <a href="#" class="logout-link" id="logout-link">Log out</a>
+    </div>
+  </aside>
+
+  <div class="scrim" id="scrim"></div>
+
+  <main class="main">
+
+    <div class="topbar">
+      <div>
+        <h1 id="topbar-title">Security Overview</h1>
+        <p class="topbar__sub" id="topbar-sub">Loading live data from Discord…</p>
+      </div>
+      <div class="topbar__actions">
+        <span class="status-pill status-pill--good desktop-only" id="desktop-status"><i></i>—</span>
+        <button class="btn btn--ghost" id="btn-refresh">Refresh</button>
+      </div>
+    </div>
+
+    <!-- OVERVIEW -->
+    <section class="view is-active" id="view-overview">
+
+      <div class="hero">
+        <div class="hero__gauge">
+          <svg viewBox="0 0 220 220" class="gauge">
+            <circle cx="110" cy="110" r="94" class="gauge__track"/>
+            <circle cx="110" cy="110" r="94" class="gauge__value" id="gauge-arc" pathLength="100" stroke-dasharray="0 100"/>
+          </svg>
+          <div class="gauge__center">
+            <div class="gauge__score" id="score-number">—</div>
+            <div class="gauge__label">SECURITY SCORE</div>
+          </div>
+        </div>
+        <div class="hero__breakdown">
+          <div class="hero__headline">
+            <span class="tag" id="score-tag">—</span>
+            <h2 id="score-headline">Fetching live server data…</h2>
+          </div>
+          <p class="hero__desc">Computed from this server's real Discord settings: verification level, two-factor requirement, explicit content filter, and configured AutoMod rules.</p>
+          <ul class="score-breakdown" id="score-breakdown"></ul>
+        </div>
+      </div>
+
+      <div class="card-grid">
+
+        <article class="card">
+          <div class="card__head">
+            <div class="card__icon card__icon--accent"><i data-ic="shield"></i></div>
+            <div><h3>Server hardening</h3><span class="chip chip--muted" id="chip-hardening">—</span></div>
+          </div>
+          <ul class="card__stats" id="stats-hardening"></ul>
+          <div class="card__foot">
+            <span class="muted">Pulled from Discord's guild settings</span>
+            <a href="#settings" class="card__link" data-view="settings">Adjust →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__head">
+            <div class="card__icon card__icon--good"><i data-ic="filter"></i></div>
+            <div><h3>AutoMod</h3><span class="chip chip--muted" id="chip-automod">—</span></div>
+          </div>
+          <ul class="card__stats" id="stats-automod"></ul>
+          <div class="card__foot">
+            <span class="muted" id="automod-foot">—</span>
+            <a href="#settings" class="card__link" data-view="settings">Manage →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__head">
+            <div class="card__icon card__icon--warn"><i data-ic="db"></i></div>
+            <div><h3>Anti-Nuke &amp; Backups</h3><span class="chip chip--warn">Not connected</span></div>
+          </div>
+          <p style="font-size:12.5px;color:var(--text-dim);line-height:1.55;">These run inside Starla's own bot process — they're not part of Discord's API, so this dashboard can't read them directly.</p>
+          <div class="notice">Wire <code>server/discord.js</code> up to your bot's own database to show live Anti-Nuke thresholds and backup snapshots here.</div>
+          <div class="card__foot">
+            <span class="muted">Configure defaults in Settings →</span>
+            <a href="#settings" class="card__link" data-view="settings">Open →</a>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="panel">
+        <div class="panel__head">
+          <h3>Recent activity</h3>
+          <a href="#logs" class="link" data-view="logs">Open full log →</a>
+        </div>
+        <div class="feed" id="feed-preview"><p class="muted">Loading…</p></div>
+      </div>
+
+    </section>
+
+    <!-- LOGS -->
+    <section class="view" id="view-logs">
+      <div class="panel panel--wide">
+        <div class="panel__head">
+          <h3>Moderation logs <span class="muted" style="font-weight:400">— live from Discord's audit log</span></h3>
+          <div class="filters" id="log-filters">
+            <button class="filter-chip is-active" data-filter="all">All</button>
+            <button class="filter-chip" data-filter="mod">Moderation</button>
+            <button class="filter-chip" data-filter="channel">Channels</button>
+            <button class="filter-chip" data-filter="role">Roles</button>
+            <button class="filter-chip" data-filter="webhook">Webhooks</button>
+            <button class="filter-chip" data-filter="automod">AutoMod</button>
+            <button class="filter-chip" data-filter="message">Messages</button>
+          </div>
+        </div>
+        <div class="terminal" id="terminal-feed"><div class="term-empty">Loading audit log…</div></div>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="view" id="view-settings">
+      <div class="card-grid card-grid--settings">
+
+        <article class="setting-card">
+          <div class="setting-card__head"><h3><i data-ic="shield"></i>Anti-Nuke</h3><label class="switch"><input type="checkbox" checked><span></span></label></div>
+          <p>Automatically locks down and reverts mass-destructive actions. Configured on Starla's backend — these controls are placeholders until wired up.</p>
+          <div class="setting-row"><span>Ban threshold</span><input type="range" min="1" max="20" value="5"></div>
+          <div class="setting-row"><span>Channel delete threshold</span><input type="range" min="1" max="20" value="3"></div>
+          <div class="setting-row"><span>Punish trigger with</span><select><option>Strip roles</option><option>Kick</option><option>Ban</option></select></div>
+        </article>
+
+        <article class="setting-card">
+          <div class="setting-card__head"><h3><i data-ic="filter"></i>AutoMod</h3><label class="switch"><input type="checkbox" checked><span></span></label></div>
+          <p>These reflect the real AutoMod rules configured for this server via Discord.</p>
+          <div id="automod-rule-list" class="setting-row" style="flex-direction:column;align-items:stretch;gap:8px;">Loading…</div>
+        </article>
+
+        <article class="setting-card">
+          <div class="setting-card__head"><h3><i data-ic="db"></i>Backups</h3><label class="switch"><input type="checkbox" checked><span></span></label></div>
+          <p>Snapshots roles, channels, and permissions for one-click restore. Requires Starla's own storage backend.</p>
+          <div class="setting-row"><span>Frequency</span><select><option>Every 6h</option><option selected>Every 12h</option><option>Daily</option></select></div>
+          <div class="setting-row"><span>Retention</span><select><option>7 snapshots</option><option selected>14 snapshots</option><option>30 snapshots</option></select></div>
+        </article>
+
+        <article class="setting-card">
+          <div class="setting-card__head"><h3><i data-ic="users"></i>Trusted roles</h3></div>
+          <p>Members with these roles bypass Anti-Nuke thresholds.</p>
+          <div class="pill-list">
+            <span class="role-pill">@Owner</span>
+            <span class="role-pill">@Head Admin</span>
+            <button class="role-pill role-pill--add">+ Add role</button>
+          </div>
+        </article>
+
+        <article class="setting-card">
+          <div class="setting-card__head"><h3><i data-ic="bell"></i>Alerts</h3></div>
+          <p>Where Starla sends real-time security notifications.</p>
+          <div class="setting-row"><span>Alert channel</span><select><option>#security-log</option><option>#mod-only</option></select></div>
+          <div class="setting-row"><span>Ping on critical event</span><label class="switch switch--sm"><input type="checkbox" checked><span></span></label></div>
+        </article>
+
+        <article class="setting-card">
+          <div class="setting-card__head"><h3><i data-ic="key"></i>Access</h3></div>
+          <p>Who can open this dashboard and change security settings.</p>
+          <div class="setting-row"><span>Dashboard access</span><select><option>Admins only</option><option>Owner only</option></select></div>
+          <div class="setting-row"><span>Require 2FA to disable Anti-Nuke</span><label class="switch switch--sm"><input type="checkbox" checked><span></span></label></div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="js/dashboard.js"></script>
+</body>
+</html>

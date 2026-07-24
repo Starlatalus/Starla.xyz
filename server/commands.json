@@ -1,0 +1,38 @@
+[
+  { "category": "Anti-Nuke", "name": "/antinuke enable", "desc": "Turn on Anti-Nuke protection for this server." },
+  { "category": "Anti-Nuke", "name": "/antinuke threshold", "desc": "Set how many destructive actions trigger a lockdown." },
+  { "category": "Anti-Nuke", "name": "/antinuke whitelist add", "desc": "Exempt a trusted admin from Anti-Nuke thresholds." },
+  { "category": "Anti-Nuke", "name": "/antinuke whitelist remove", "desc": "Remove a member from the Anti-Nuke whitelist." },
+  { "category": "Anti-Nuke", "name": "/antinuke punishment", "desc": "Choose what happens to a triggering account: strip roles, kick, or ban." },
+  { "category": "Anti-Nuke", "name": "/lockdown", "desc": "Immediately freeze all channels — no one below staff can send messages." },
+
+  { "category": "AutoMod", "name": "/automod spam", "desc": "Toggle the spam/flood message filter." },
+  { "category": "AutoMod", "name": "/automod invites", "desc": "Block or allow Discord invite links being posted." },
+  { "category": "AutoMod", "name": "/automod filter add", "desc": "Add a word or phrase to the blocked-content list." },
+  { "category": "AutoMod", "name": "/automod filter remove", "desc": "Remove a word from the blocked-content list." },
+  { "category": "AutoMod", "name": "/automod links", "desc": "Restrict which domains members are allowed to post." },
+  { "category": "AutoMod", "name": "/automod mentions", "desc": "Cap how many users/roles can be pinged in one message." },
+
+  { "category": "Backups", "name": "/backup create", "desc": "Take a manual snapshot of roles, channels, and permissions right now." },
+  { "category": "Backups", "name": "/backup list", "desc": "Show all saved snapshots for this server." },
+  { "category": "Backups", "name": "/backup restore", "desc": "Roll the server back to a chosen snapshot." },
+  { "category": "Backups", "name": "/backup schedule", "desc": "Set how often automatic snapshots are taken." },
+
+  { "category": "Moderation", "name": "/ban", "desc": "Ban a member, with an optional reason and message-delete window." },
+  { "category": "Moderation", "name": "/kick", "desc": "Remove a member from the server." },
+  { "category": "Moderation", "name": "/timeout", "desc": "Temporarily mute a member for a set duration." },
+  { "category": "Moderation", "name": "/warn", "desc": "Log a formal warning against a member's record." },
+  { "category": "Moderation", "name": "/case", "desc": "Look up a member's full moderation history." },
+  { "category": "Moderation", "name": "/purge", "desc": "Bulk-delete recent messages in a channel." },
+  { "category": "Moderation", "name": "/slowmode", "desc": "Set a per-user message cooldown on a channel." },
+
+  { "category": "Alerts", "name": "/alerts channel", "desc": "Set which channel Starla posts security alerts in." },
+  { "category": "Alerts", "name": "/alerts test", "desc": "Send a test alert to confirm the channel is wired up right." },
+  { "category": "Alerts", "name": "/alerts critical-ping", "desc": "Toggle a role ping for critical severity events only." },
+
+  { "category": "Utility", "name": "/serverinfo", "desc": "Show verification level, boost tier, member count, and more." },
+  { "category": "Utility", "name": "/userinfo", "desc": "Look up join date, roles, and account age for a member." },
+  { "category": "Utility", "name": "/permcheck", "desc": "Audit a role's permissions against Starla's hardening recommendations." },
+  { "category": "Utility", "name": "/ping", "desc": "Check Starla's response time and uptime." },
+  { "category": "Utility", "name": "/help", "desc": "List every command, or get details on one." }
+]

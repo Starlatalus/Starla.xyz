@@ -1,0 +1,19 @@
+{
+  "name": "starla-dashboard-server",
+  "version": "1.0.0",
+  "description": "Backend for the Starla Discord security dashboard — real OAuth2 login + live Discord API data.",
+  "main": "index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0"
+  }
+}
